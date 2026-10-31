@@ -1,4 +1,4 @@
-import http from "./client";
+import { http } from "./client";
 
 /**
  * Semua response backend (kecuali auth) berbentuk { message, data }.

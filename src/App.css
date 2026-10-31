@@ -275,6 +275,37 @@ body, html {
   transform: translateY(-2px);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.header-icon-btn:hover {
+  background: var(--button-blue);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.settings-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
 /* --- SIMULATOR LAYOUT --- */
 .simulator-layout {
   display: flex;
