@@ -1,60 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap');
 
 :root {
-  /* Warna Dasar */
-  --button-blue: #5688D2;
-  --button-red: #FF6262;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-display: 'Rajdhani', 'Inter', sans-serif;
+
+  /* Warna aksen maritim */
+  --button-blue: #0F6E7A;
+  --button-blue-hover: #0B5560;
+  --button-red: #C0504D;
+  --accent-brass: #C9A227;
+  --accent-sea: #147D8C;
 
   /* Latar Belakang (Light Mode) */
   --bg-primary: #ffffff;
-  --bg-secondary: #F9FAFB; 
-  --bg-panel: #F0F6FF;
-  --bg-panel-edit: #D0E3FF;
+  --bg-secondary: #F2F6F8;
+  --bg-panel: #E9F2F5;
+  --bg-panel-edit: #D7E7EC;
   --bg-panel-inner: #ffffff;
-  --bg-position: #D0E3FF;
-  --bg-action-panel: #7C8FAB;
-  --bg-disabled: #E5E7EB;
-  --bg-hover: #F3F4F6;
+  --bg-position: #DCEBF0;
+  --bg-action-panel: #40566B;
+  --bg-disabled: #E2E8EC;
+  --bg-hover: #EAF1F4;
   
   /* Teks (Light Mode) */
-  --text-primary: #1A202C;
-  --text-secondary: #4A5568;
+  --text-primary: #0B2239;
+  --text-secondary: #3F5A6B;
   --text-on-action: #ffffff;
-  --text-disabled: #9CA3AF;
+  --text-disabled: #8AA0AD;
   
   /* Border & Shadow */
-  --border-primary: #D1D9E1;
-  --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --sidebar-shadow: 3px 0px 15px -3px rgba(0,0,0,0.05);
+  --border-primary: #C9D8DF;
+  --shadow-light: 0 4px 6px -1px rgba(7, 29, 43, 0.10), 0 2px 4px -1px rgba(7, 29, 43, 0.06);
+  --sidebar-shadow: 3px 0px 15px -3px rgba(7, 29, 43, 0.10);
 
   /* Sidebar */
-  --sidebar-active-bg: #F3F4F6;
+  --sidebar-active-bg: #E7F0F3;
 }
 
 [data-theme='dark'] {
   /* Latar Belakang (Dark Mode) */
-  --bg-primary: #2B2E32;
-  --bg-secondary: #1A202C;
-  --bg-panel: #2B2E32;
-  --bg-panel-edit: #4D4D4D;
-  --bg-panel-inner: #43464B;
-  --bg-position: #585858;
-  --bg-action-panel: #4A5568;
-  --bg-disabled: #4B5563;
-  --bg-hover: #2D3748;
+  --bg-primary: #0B1A26;
+  --bg-secondary: #07131C;
+  --bg-panel: #102A3A;
+  --bg-panel-edit: #17384A;
+  --bg-panel-inner: #15303F;
+  --bg-position: #1B3B4D;
+  --bg-action-panel: #2E4352;
+  --bg-disabled: #233B49;
+  --bg-hover: #1B3545;
+
+  /* Aksen */
+  --button-blue: #2A9DAE;
+  --button-blue-hover: #37B4C6;
+  --button-red: #E06A66;
+  --accent-brass: #E0BE4F;
+  --accent-sea: #37B4C6;
   
   /* Teks (Dark Mode) */
-  --text-primary: #ffffff;
-  --text-secondary: #ffffff;
-  --text-disabled: #ffffff;
+  --text-primary: #EDF6F9;
+  --text-secondary: #B7CBD4;
+  --text-disabled: #8FA6B1;
   
   /* Border & Shadow */
-  --border-primary: transparent;
-  --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-  --sidebar-shadow: 3px 0px 15px -3px rgba(0,0,0,0.2);
+  --border-primary: #2B4859;
+  --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.35), 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  --sidebar-shadow: 3px 0px 15px -3px rgba(0, 0, 0, 0.35);
 
   /* Sidebar */
-  --sidebar-active-bg: #2D3748;
+  --sidebar-active-bg: #16303F;
 }
 
 /* --- RESET & BASE STYLES --- */
@@ -65,11 +78,12 @@
 }
 
 body, html {
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-body);
   background-color: var(--bg-secondary);
   color: var(--text-primary);
   overflow-x: hidden;
   height: 100%;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* --- SIMULATOR CONTAINER --- */
@@ -135,11 +149,13 @@ body, html {
 /* Sidebar Label (hidden by default) */
 .sidebar-label {
   margin-left: 12px;
-  font-size: 1.1rem; /* Sedikit lebih besar */
-  font-weight: 500;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
   color: var(--text-primary);
   opacity: 0;
-  transform: translateX(-20px); /* Animasi lebih panjang */
+  transform: translateX(-20px);
   transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
   white-space: nowrap;
   pointer-events: none;
@@ -227,8 +243,11 @@ body, html {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 28px; /* Sedikit lebih besar */
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
   margin: 0;
   color: var(--text-primary);
   white-space: nowrap;
@@ -238,19 +257,21 @@ body, html {
 .config-button {
   background-color: var(--button-blue);
   color: white;
-  padding: 12px 24px; /* Sedikit lebih besar */
+  padding: 12px 24px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: 500;
-  font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
   box-shadow: var(--shadow-light);
   transition: background-color 0.3s ease, transform 0.2s ease;
   z-index: 2;
 }
 
 .config-button:hover {
-  background-color: #4a7bc8;
+  background-color: var(--button-blue-hover);
   transform: translateY(-2px);
 }
 
@@ -302,8 +323,11 @@ body, html {
 }
 
 .panel-header h2 {
-  font-size: 18px;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   color: var(--text-primary);
   margin: 0;
 }
@@ -440,7 +464,7 @@ body, html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4a7bc8;
+  background: var(--button-blue-hover);
 }
 
 /* --- RESPONSIVENESS --- */

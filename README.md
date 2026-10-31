@@ -1,6 +1,6 @@
-# Vessel NDDU — Frontend
+# Vessel NDDU — Navigation Data Distribution Unit (Frontend)
 
-Frontend **Navigational Data Display Unit (NDDU)** untuk simulator sensor kapal.
+Frontend **Navigation Data Distribution Unit (NDDU)** untuk simulator sensor kapal.
 Aplikasi React + Vite (opsional desktop Tauri) yang mengonsumsi backend Rust
 (Actix-web) milik **vessel-nddu**.
 

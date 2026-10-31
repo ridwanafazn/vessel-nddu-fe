@@ -103,12 +103,12 @@
 
 /* --- VARIAN TOMBOL: PRIMARY (BIRU - UTK SAVE) --- */
 .confirm-btn-primary {
-  background-color: #3b82f6;
+  background-color: var(--button-blue);
   color: #fff;
 }
 
 .confirm-btn-primary:hover {
-  background-color: #2563eb;
+  background-color: var(--button-blue-hover);
 }
 
 /* --- TAMBAHAN UNTUK DARK MODE --- */

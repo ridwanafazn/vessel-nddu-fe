@@ -3,7 +3,7 @@
   gap: 15px;
   margin-bottom: 20px;
   flex-grow: 1;
-  background-color: #D0E3FF;
+  background-color: var(--bg-position);
   padding: 20px;
   border-radius: 12px;
   transition: background-color 0.3s ease;
@@ -76,9 +76,9 @@
   overflow: visible;
 }
 
-.gauge-dial-sky { fill: #aed6f1; }
-.gauge-dial-sea { fill: #3498db; }
-.gauge-tick { stroke: #333; stroke-width: 3; }
+.gauge-dial-sky { fill: #d7ecf0; }
+.gauge-dial-sea { fill: var(--accent-sea); }
+.gauge-tick { stroke: #1b3b4d; stroke-width: 3; }
 .gauge-label-cardinal {
   font-size: 22px;
   font-weight: 700;
@@ -100,12 +100,12 @@
   transform: translate(-50%, -50%);
 }
 .roll-arc {
-  fill: #f8f9fa;
-  stroke: #e0e0e0;
+  fill: #f4f8fa;
+  stroke: #c9d8df;
   stroke-width: 2;
 }
-.roll-pointer { fill: #333; }
-.roll-sea { fill: #3498db; }
+.roll-pointer { fill: #0B2239; }
+.roll-sea { fill: var(--accent-sea); }
 .roll-labels-svg {
   font-size: 18px;
   font-weight: 700;

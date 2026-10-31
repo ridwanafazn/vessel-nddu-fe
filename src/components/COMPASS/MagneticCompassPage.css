@@ -81,13 +81,13 @@
     /* Derajat diatur supaya ada "lubang" transparan di posisi N(0), E(90), S(180), W(270) */
     background: conic-gradient(
         transparent 0deg 10deg,      /* Celah Utara Kanan */
-        #0088CC 10deg 80deg,         /* Garis Biru NE */
+        var(--button-blue) 10deg 80deg,
         transparent 80deg 100deg,    /* Celah Timur */
-        #0088CC 100deg 170deg,       /* Garis Biru SE */
+        var(--button-blue) 100deg 170deg,
         transparent 170deg 190deg,   /* Celah Selatan */
-        #0088CC 190deg 260deg,       /* Garis Biru SW */
+        var(--button-blue) 190deg 260deg,
         transparent 260deg 280deg,   /* Celah Barat */
-        #0088CC 280deg 350deg,       /* Garis Biru NW */
+        var(--button-blue) 280deg 350deg,
         transparent 350deg 360deg    /* Celah Utara Kiri */
     );
 
@@ -114,11 +114,11 @@
 /* UPDATE DISINI: HAPUS BACKGROUND & PADDING AGAR TRANSPARAN */
 .outside-label {
     position: absolute;
+    font-family: var(--font-display);
     font-size: 20px;
-    font-weight: 800;
-    color: #0088CC;
+    font-weight: 700;
+    color: var(--button-blue);
     line-height: 1;
-    /* Background dihapus, kotak hilang! */
     background-color: transparent; 
     padding: 0; 
 }
@@ -261,10 +261,10 @@
 
 .heading-number-big {
     font-size: 35px;
-    font-weight: 800;
-    color: #111827;
+    font-weight: 700;
+    color: var(--text-primary);
     line-height: 1;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-display);
     transition: color 0.3s ease;
 }
 

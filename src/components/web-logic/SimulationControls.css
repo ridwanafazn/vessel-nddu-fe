@@ -3,8 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Warna background baru sesuai request (Light/Dark mode sama) */
-  background-color: #6B84AD; 
+  /* Warna background panel aksi */
+  background-color: var(--bg-action-panel);
   padding: 8px;
   border-radius: 16px;
   margin-top: auto;
@@ -18,7 +18,7 @@
 
 /* Pastikan Dark Mode tidak menimpa warna ini (karena requestnya sama aja warnanya) */
 [data-theme='dark'] .action-buttons-container {
-  background-color: #6B84AD; 
+  background-color: var(--bg-action-panel);
 }
 
 .action-buttons-group { 
@@ -47,7 +47,7 @@
 
 /* Tombol Play (Warna Biru Default) */
 .action-icon-btn:first-child { 
-  background-color: #3b82f6; /* Tetap biru terang biar kontras */
+  background-color: var(--button-blue);
 }
 
 .action-icon-btn img { 

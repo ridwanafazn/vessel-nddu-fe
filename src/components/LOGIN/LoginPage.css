@@ -6,7 +6,7 @@
   overflow: hidden;
 }
 
-/* LIGHT MODE BACKGROUND (Gradient) */
+/* LIGHT MODE BACKGROUND (Gradient maritim) */
 .login-background {
   position: absolute;
   top: 0;
@@ -14,12 +14,11 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    to top right,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.7) 15%,
-    rgba(255, 255, 255, 0.3) 30%,
-    #D0E3FF 50%,
-    #D0E3FF 100%
+    135deg,
+    #F8FCFD 0%,
+    #E4F0F3 35%,
+    #CFE3E8 65%,
+    #B9D6DD 100%
   );
   z-index: 1;
   transition: background 0.3s ease;
@@ -28,12 +27,11 @@
 /* DARK MODE BACKGROUND (Gradient) */
 [data-theme="dark"] .login-background {
   background: linear-gradient(
-    to top right,
-    rgba(67, 70, 75, 0.9) 0%,
-    rgba(67, 70, 75, 0.7) 15%,
-    rgba(67, 70, 75, 0.5) 30%,
-    #2C2E33 50%,
-    #2C2E33 100%
+    135deg,
+    #06111A 0%,
+    #0A1C2B 40%,
+    #0E2A3A 70%,
+    #12384A 100%
   );
 }
 
@@ -95,29 +93,43 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px; /* DIKECILKAN LAGI DARI 5px KE 3px */
+  gap: 4px;
   padding: 15px;
+  color: var(--text-primary);
 }
 
-/* LOGO - DIPERBESAR LAGI, TEXT TETAP */
-.login-logo {
-  width: 220px; /* DIPERBESAR DARI 180px KE 220px */
-  height: 220px; /* DIPERBESAR DARI 180px KE 220px */
-  object-fit: contain;
-  border-radius: 0;
+/* MARK KAPAL/KOMPAS ORISINAL */
+.login-mark {
+  width: 108px;
+  height: 108px;
+  color: var(--accent-brass);
+  filter: drop-shadow(0 6px 14px rgba(7, 29, 43, 0.25));
 }
 
-/* JUDUL - TETAP UKURAN SAMA */
+/* JUDUL */
 .login-title {
-  color: #000000;
-  font-size: 38px; /* TETAP 38px */
-  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
   margin: 0;
-  line-height: 1.1;
+  line-height: 1.05;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   transition: color 0.3s ease;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(7, 29, 43, 0.12);
+  max-width: 720px;
+}
+
+.login-subtitle {
+  margin: 2px 0 0;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 /* DARK MODE - TEXT COLOR */
@@ -139,25 +151,25 @@
   align-items: center;
 }
 
-/* KOTAK LOGIN - TURUNKAN LAGI KARENA LOGO BESAR */
+/* KOTAK LOGIN */
 .login-card {
-  background: rgba(255, 255, 255, 0.98);
-  border-radius: 25px;
-  padding: 45px 55px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 20px;
+  padding: 40px 48px;
   width: 440px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
+  box-shadow: 0 24px 60px rgba(7, 29, 43, 0.20);
+  border: 1px solid rgba(201, 216, 223, 0.9);
+  backdrop-filter: blur(14px);
   transition: all 0.3s ease;
   position: relative;
-  margin-top: 240px; /* TURUNKAN LAGI DARI 220px KE 240px (karena logo lebih besar) */
+  margin-top: 215px;
 }
 
 /* DARK MODE - KOTAK LOGIN */
 [data-theme="dark"] .login-card {
-  background: rgba(67, 70, 75, 0.98);
-  border: 2px solid rgba(67, 70, 75, 0.9);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  background: rgba(16, 42, 58, 0.96);
+  border: 1px solid rgba(43, 72, 89, 0.9);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
 }
 
 .login-form {
@@ -170,12 +182,14 @@
 
 .form-label {
   display: block;
-  color: #000000;
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 10px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   transition: color 0.3s ease;
-  letter-spacing: 0.5px;
 }
 
 [data-theme="dark"] .form-label {
@@ -196,19 +210,19 @@
 
 .form-input:focus {
   outline: none;
-  border-color: #007AFF;
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+  border-color: var(--button-blue);
+  box-shadow: 0 0 0 3px rgba(15, 110, 122, 0.15);
 }
 
 [data-theme="dark"] .form-input {
-  background: #5A5D63;
-  border-color: #4A4D52;
-  color: #FFFFFF;
+  background: #15303F;
+  border-color: #2B4859;
+  color: var(--text-primary);
 }
 
 [data-theme="dark"] .form-input:focus {
-  border-color: #4A90E2;
-  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+  border-color: var(--button-blue);
+  box-shadow: 0 0 0 3px rgba(42, 157, 174, 0.25);
 }
 
 .form-input::placeholder {
@@ -223,38 +237,41 @@
 
 .login-button {
   width: 100%;
-  padding: 18px;
-  background: #007AFF;
+  padding: 17px;
+  background: var(--button-blue);
   color: white;
   border: none;
   border-radius: 12px;
-  font-size: 18px;
+  font-family: var(--font-display);
+  font-size: 19px;
   font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   cursor: pointer;
   margin-top: 15px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+  box-shadow: 0 6px 18px rgba(15, 110, 122, 0.30);
 }
 
 .login-button:hover {
-  background: #0056CC;
+  background: var(--button-blue-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+  box-shadow: 0 8px 22px rgba(15, 110, 122, 0.40);
 }
 
 .login-button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 10px rgba(0, 122, 255, 0.3);
+  box-shadow: 0 2px 10px rgba(15, 110, 122, 0.30);
 }
 
 [data-theme="dark"] .login-button {
-  background: #4A90E2;
-  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+  background: var(--button-blue);
+  box-shadow: 0 6px 18px rgba(42, 157, 174, 0.28);
 }
 
 [data-theme="dark"] .login-button:hover {
-  background: #357ABD;
-  box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+  background: var(--button-blue-hover);
+  box-shadow: 0 8px 22px rgba(42, 157, 174, 0.38);
 }
 
 [data-theme="dark"] .login-button:active {
@@ -342,11 +359,27 @@
   margin: 14px 0 0;
   text-align: center;
   font-size: 0.85rem;
-  color: #6b7280;
+  letter-spacing: 1.6px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
 }
 
 [data-theme="dark"] .login-demo-hint {
-  color: #cbd5e1;
+  color: #B7CBD4;
+}
+
+[data-theme="dark"] .login-title {
+  color: #EDF6F9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .login-subtitle {
+  color: #B7CBD4;
+}
+
+[data-theme="dark"] .login-mark {
+  color: var(--accent-brass);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
 }
 
 [data-theme="dark"] .dark-mode-label-absolute {

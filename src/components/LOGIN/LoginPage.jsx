@@ -4,7 +4,6 @@ import loginLight from "../../assets/login/login_light.png";
 import loginDark from "../../assets/login/login_dark.png";
 import darkModeIcon from "../../assets/mode/DarkMode.png";
 import lightModeIcon from "../../assets/mode/LightMode.png";
-import logoIcon from "../../assets/login/icon.png";
 import { authApi } from "../../api/endpoints";
 import { useBackendHealth } from "../../hooks/useBackendHealth";
 import ConnectionBanner from "../web-logic/ConnectionBanner";
@@ -132,12 +131,22 @@ const LoginPage = ({ onLogin }) => {
       {/* TITLE SECTION */}
       <div className="login-title-container">
         <div className="login-title-wrapper">
-          <img 
-            src={logoIcon} 
-            alt="Navigational System Simulator Logo" 
-            className="login-logo"
-          />
-          <h1 className="login-title">Navigational System Simulator</h1>
+          {/* Mark kapal/kompas orisinal (bukan logo institusi pihak lain) */}
+          <svg
+            className="login-mark"
+            viewBox="0 0 64 64"
+            role="img"
+            aria-label="NDDU vessel mark"
+          >
+            <circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.55" />
+            <path
+              d="M32 8 L37.5 26.5 L56 32 L37.5 37.5 L32 56 L26.5 37.5 L8 32 L26.5 26.5 Z"
+              fill="currentColor"
+            />
+            <circle cx="32" cy="32" r="4.5" fill="var(--bg-primary)" />
+          </svg>
+          <h1 className="login-title">Navigation Data Distribution Unit</h1>
+          <p className="login-subtitle">Vessel Sensor Simulator · NDDU</p>
         </div>
       </div>
       
@@ -185,7 +194,7 @@ const LoginPage = ({ onLogin }) => {
               {isLoading ? "Menghubungkan…" : "Login"}
             </button>
 
-            <p className="login-demo-hint">Demo akses: <strong>admin</strong> / <strong>admin</strong></p>
+            <p className="login-demo-hint"><strong>admin</strong> / <strong>admin</strong></p>
           </form>
         </div>
       </div>

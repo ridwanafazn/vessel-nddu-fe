@@ -1,17 +1,17 @@
 /* --- TEMA LIGHT MODE (DEFAULT) --- */
 :root {
-  --config-bg: #F6FAFF;
-  --config-header: #A7C7E7;
-  --config-border: #D1D9E1;
-  --config-label: #3A4A5A;
+  --config-bg: #F4F9FA;
+  --config-header: #0F6E7A;
+  --config-border: #C9D8DF;
+  --config-label: #0B2239;
   --config-input-bg: #fff;
-  --config-input-text: #3A4A5A;
-  --config-btn: #E3EAF6;
-  --config-btn-hover: #C9D6E3;
-  --config-btn-save: #A7C7E7;
-  --config-btn-save-hover: #7FB3DD;
-  --warning-text: #D32F2F;
-  --warning-bg: #FFEBEE;
+  --config-input-text: #0B2239;
+  --config-btn: #DCEBF0;
+  --config-btn-hover: #C6DEE5;
+  --config-btn-save: #0F6E7A;
+  --config-btn-save-hover: #0B5560;
+  --warning-text: #B23B37;
+  --warning-bg: #FBEAEA;
 }
 
 /* Overlay khusus Config, z-index lebih rendah dari ConfirmationPopup (biasanya 1000) */
@@ -142,14 +142,14 @@
   transition: background 0.2s;
 }
 .popup-btn-default {
-  background: #E3EAF6;
-  color: #5688D2;
-  border: 1px solid #C9D6E3;
+  background: #DCEBF0;
+  color: var(--config-header);
+  border: 1px solid #C6DEE5;
   box-shadow: none;
 }
 .popup-btn-default:hover:not(:disabled) {
-  background: #C9D6E3;
-  color: #4274B3;
+  background: #C6DEE5;
+  color: var(--config-header);
 }
 .popup-btn-save.config-btn {
   background: var(--config-btn-save);
@@ -208,18 +208,18 @@
 
 /* --- TEMA DARK MODE --- */
 [data-theme='dark'] {
-  --config-bg: #4D4D4D;
-  --config-header: #3A3D42;
-  --config-border: #5a5a5a;
-  --config-label: #FFFFFF;
+  --config-bg: #102A3A;
+  --config-header: #0B2239;
+  --config-border: #2B4859;
+  --config-label: #EDF6F9;
   --config-input-bg: #FFFFFF;
-  --config-input-text: #1A202C;
-  --config-btn: #4B5563;
-  --config-btn-hover: #6b7280;
-  --config-btn-save: #5688D2;
-  --config-btn-save-hover: #4a7ac0;
+  --config-input-text: #0B2239;
+  --config-btn: #233B49;
+  --config-btn-hover: #2E4E5F;
+  --config-btn-save: #2A9DAE;
+  --config-btn-save-hover: #37B4C6;
   --warning-text: #FFCDD2;
-  --warning-bg: rgba(211, 47, 47, 0.2);
+  --warning-bg: rgba(192, 80, 77, 0.25);
 }
 
 [data-theme='dark'] .popup-btn-default {

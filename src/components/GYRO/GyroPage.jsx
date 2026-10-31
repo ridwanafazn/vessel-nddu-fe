@@ -56,7 +56,7 @@ const HeadingGauge = ({ heading }) => {
   return (
     <div className="gauge-container">
       <svg viewBox="0 0 240 240" className="gauge-svg">
-        <circle cx={120} cy={120} r={105} fill="#06A3DD" stroke="#e0e0e0" strokeWidth="2"/>
+        <circle cx={120} cy={120} r={105} fill="var(--accent-sea)" stroke="#c9d8df" strokeWidth="2"/>
         <g>{ticks}</g>
       </svg>
       <img 
