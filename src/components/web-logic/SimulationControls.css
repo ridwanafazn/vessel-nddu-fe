@@ -1,0 +1,102 @@
+/* Container Utama (Pill Shape) */
+.action-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Warna background baru sesuai request (Light/Dark mode sama) */
+  background-color: #6B84AD; 
+  padding: 8px;
+  border-radius: 16px;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  /* Tambahan shadow biar lebih pop-up karena warnanya gelap */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Pastikan Dark Mode tidak menimpa warna ini (karena requestnya sama aja warnanya) */
+[data-theme='dark'] .action-buttons-container {
+  background-color: #6B84AD; 
+}
+
+.action-buttons-group { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px;
+}
+
+/* Tombol Bulat (Play/Stop) */
+.action-icon-btn { 
+  background-color: white; 
+  border: none; 
+  border-radius: 50%; 
+  width: 40px; 
+  height: 40px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  cursor: pointer; 
+  transition: transform 0.2s ease;
+}
+
+.action-icon-btn:hover:not(:disabled) { 
+  transform: scale(1.1); 
+}
+
+/* Tombol Play (Warna Biru Default) */
+.action-icon-btn:first-child { 
+  background-color: #3b82f6; /* Tetap biru terang biar kontras */
+}
+
+.action-icon-btn img { 
+  width: 20px; 
+  height: 20px; 
+}
+
+/* Garis Pemisah */
+.action-divider { 
+  width: 1px; 
+  height: 24px; 
+  /* Diubah jadi putih transparan agar terlihat di atas background #6B84AD */
+  background-color: rgba(255, 255, 255, 0.4); 
+  margin: 0 16px; 
+}
+
+[data-theme='dark'] .action-divider {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Tombol Delete Panjang */
+.action-delete-btn {  
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  background-color: #ef4444; /* Tetap merah (standard danger) */
+  color: white; 
+  border: none; 
+  padding: 8px 16px; 
+  border-radius: 10px; 
+  font-size: 14px; 
+  font-weight: 500; 
+  cursor: pointer; 
+  transition: background-color 0.2s ease;
+}
+
+.action-delete-btn:hover:not(:disabled) { 
+  background-color: #dc2626; 
+}
+
+.action-delete-btn img { 
+  width: 18px; 
+  height: 18px; 
+}
+
+/* Disabled State */
+.action-icon-btn:disabled, 
+.action-delete-btn:disabled { 
+  opacity: 0.6; 
+  cursor: not-allowed; 
+  transform: none !important;
+}

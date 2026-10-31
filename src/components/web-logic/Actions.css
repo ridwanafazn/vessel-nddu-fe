@@ -1,0 +1,68 @@
+.edit-actions-container {
+  display: flex;
+  /* Ubah arah flex jadi kolom (atas ke bawah) */
+  flex-direction: column; 
+  gap: 10px; /* Jarak antar tombol vertikal */
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+[data-theme='dark'] .edit-actions-container {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-action {
+  padding: 10px 0; /* Padding atas bawah, kiri kanan 0 karena width 100% */
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  /* Agar tombol memenuhi lebar container */
+  width: 100%; 
+}
+
+/* --- STYLE TOMBOL DEFAULT (Putih) --- */
+.btn-action.btn-default {
+  background-color: #ffffff; 
+  border: 1px solid #D1D5DB; 
+  color: #374151; 
+}
+
+.btn-action.btn-default:hover:not(:disabled) {
+  background-color: #F3F4F6; 
+  border-color: #9CA3AF;
+}
+
+/* Override untuk Dark Mode */
+[data-theme='dark'] .btn-action.btn-default {
+  background-color: #374151; 
+  border-color: #4B5563;
+  color: #E5E7EB;
+}
+
+[data-theme='dark'] .btn-action.btn-default:hover:not(:disabled) {
+  background-color: #4B5563; 
+}
+
+/* --- STYLE TOMBOL SAVE (Biru) --- */
+.btn-action.btn-save {
+  background-color: #3b82f6; 
+  border: 1px solid #3b82f6;
+  color: white;
+}
+
+.btn-action.btn-save:hover:not(:disabled) {
+  background-color: #2563EB; 
+}
+
+/* Disabled State */
+.btn-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}

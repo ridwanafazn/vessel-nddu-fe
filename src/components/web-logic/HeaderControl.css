@@ -1,0 +1,54 @@
+.panel-header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.panel-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.panel-icon-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.panel-icon-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-edit-icon {
+  background-color: #3b82f6; /* var(--button-blue) */
+}
+
+.btn-delete-icon {
+  background-color: #ef4444; /* var(--button-red) */
+}
+
+/* Logic khusus mode SAVE (Weather Page) */
+.panel-icon-btn.btn-save-mode {
+  width: auto;
+  padding: 0 16px;
+  background-color: #22c55e; /* Hijau */
+  gap: 5px;
+}
+
+.save-text-header {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.panel-icon-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}

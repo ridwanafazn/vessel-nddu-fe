@@ -1,0 +1,80 @@
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background-color: #fff;
+  color: #333;
+  padding: 12px 24px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 2000; /* Di atas segalanya, termasuk popup */
+  opacity: 0;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 14px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Animasi Masuk */
+.toast-notification.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Animasi Keluar */
+.toast-notification.hide {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-20px);
+}
+
+/* --- VARIAN WARNA --- */
+
+/* Success (Hijau) */
+.toast-notification.success {
+  border-left: 4px solid #22c55e;
+}
+.toast-notification.success .toast-icon {
+  background-color: #22c55e;
+  color: white;
+}
+
+/* Error (Merah) */
+.toast-notification.error {
+  border-left: 4px solid #ef4444;
+}
+.toast-notification.error .toast-icon {
+  background-color: #ef4444;
+  color: white;
+}
+
+/* Info (Biru) */
+.toast-notification.info {
+  border-left: 4px solid #3b82f6;
+}
+.toast-notification.info .toast-icon {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Icon Circle */
+.toast-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Dark Mode Support */
+[data-theme='dark'] .toast-notification {
+  background-color: #1f2937;
+  color: #f3f4f6;
+  border-color: rgba(255,255,255,0.1);
+}

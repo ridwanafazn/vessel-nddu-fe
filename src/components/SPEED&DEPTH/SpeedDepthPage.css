@@ -1,0 +1,362 @@
+/* --- CONTAINER VISUALISASI --- */
+.visualization-cards-wrapper {
+  display: flex;
+  flex-direction: row; 
+  gap: 20px;
+  flex-grow: 1;
+  margin-bottom: 20px;
+  background-color: #D0E3FF; 
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+  align-items: stretch; 
+}
+
+/* === CARD === */
+.vis-card {
+  flex: 1; 
+  min-width: 0; 
+  background-color: #FFFFFF;
+  border: none; 
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.vis-header {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vis-icon {
+  font-size: 18px;
+  color: var(--button-blue);
+}
+
+.vis-content {
+  display: flex;
+  align-items: center; 
+  width: 100%;
+  flex-grow: 1;
+}
+
+/* === INNER BOX SETTINGS === */
+.speed-inner-box {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;    
+    width: 100%; 
+    gap: 10px;              
+    border: none;
+    background-color: transparent; 
+    padding: 0; 
+}
+
+/* Depth Box Layout */
+.depth-inner-box {
+    display: flex;
+    flex-direction: column;   
+    align-items: center;
+    justify-content: center;
+    width: 100%; 
+    gap: 20px;
+    border: none;
+    background-color: transparent; 
+    padding: 0; 
+    flex-grow: 1;
+}
+
+/* --- SPEED GAUGE --- */
+.speed-gauge-wrapper {
+  flex-grow: 1;
+  position: relative;
+  padding: 5px 0 25px 0; 
+  width: 100%; 
+}
+
+/* RULER (ABSOLUTE POSITIONING) */
+.speed-ruler {
+  position: relative;
+  width: 100%;
+  height: 20px; 
+  margin-bottom: 0;
+  border-bottom: 2px solid #5B9BD5; 
+  z-index: 5;
+}
+
+.speed-ruler span {
+  font-size: 12px;
+  color: #000; /* Warna Default (Light Mode) */
+  font-weight: 700; 
+  font-style: italic;
+  position: absolute; 
+  bottom: -2px;
+  transform: translateX(-50%); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==== UPDATE WARNA ANGKA PENGGARIS: PUTIH SAAT DARK MODE ==== */
+[data-theme='dark'] .speed-ruler span {
+  color: #FFFFFF;
+}
+/* ============================================================ */
+
+.speed-ruler span:nth-child(1) { left: 0%; }      
+.speed-ruler span:nth-child(2) { left: 16.66%; }  
+.speed-ruler span:nth-child(3) { left: 33.33%; }  
+.speed-ruler span:nth-child(4) { left: 50%; }     
+.speed-ruler span:nth-child(5) { left: 66.66%; }  
+.speed-ruler span:nth-child(6) { left: 83.33%; }  
+.speed-ruler span:nth-child(7) { left: 100%; }    
+
+.speed-ruler span::after {
+  content: '';
+  display: block;
+  width: 2px;       
+  height: 6px;       
+  background-color: #5B9BD5; 
+  margin-top: 2px; 
+}
+
+/* === SPEED TRACK (KOTAK LURUS) === */
+.speed-track {
+  height: 28px;
+  width: 100%;
+  background-color: #E5E7EB;
+  border-radius: 0; 
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  margin-top: 0;
+}
+
+.speed-segment { height: 100%; border-right: none; }
+.speed-segment.green { width: 16.66%; background-color: #98FB98; opacity: 1; }
+.speed-segment.blue { width: 33.33%; background-color: #A3C4D9; opacity: 1; }
+.speed-segment.yellow { width: 50%; background-color: #F0E68C; opacity: 1; }
+.speed-segment.red { width: 0%; display: none; }
+
+.speed-needle {
+  position: absolute;
+  top: 26px; 
+  height: 50px; 
+  width: auto;
+  transform: translateX(-50%); 
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+  z-index: 20; 
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+}
+
+.speed-needle img {
+    height: 100%;
+    width: auto;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+}
+
+
+/* --- INFO VALUES & ARROWS --- */
+.speed-inner-box .digital-value-box {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 1. Default (Light Mode): Pakai variable text primary */
+.speed-inner-box .value-large {
+    color: var(--text-primary, #000000); 
+}
+
+/* 2. Dark Mode Override: Angka Speed Besar Jadi Putih */
+[data-theme='dark'] .speed-inner-box .value-large {
+    color: #FFFFFF;
+}
+
+.speed-display-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; 
+}
+
+.speed-text-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.speed-inner-box .value-row {
+    justify-content: flex-start;
+    line-height: 1;
+}
+
+.speed-delta-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4A90E2; 
+    margin-top: 4px; 
+    margin-left: 1px; 
+}
+
+.trend-arrows-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+.trend-arrow {
+    width: 20px; 
+    height: auto;
+    display: block;
+    transition: opacity 0.2s ease;
+}
+
+.trend-arrow.arrow-up {
+    margin-bottom: 2px; 
+}
+
+/* --- DEPTH INFO STYLING --- */
+.depth-inner-box .depth-info-side {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+    width: 100%;
+}
+
+.depth-inner-box .value-row {
+    justify-content: center;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+/* === STYLE ABSOLUTE UNTUK DELTA DEPTH === */
+.depth-delta-absolute {
+    position: absolute;
+    bottom: 15px; 
+    left: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4A90E2; 
+    white-space: nowrap; 
+}
+
+.label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.value-large {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Roboto', monospace;
+}
+
+.unit {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.depth-info-side .divider-vertical {
+  height: 1px;
+  background-color: var(--border-primary);
+  margin: 15px 0;
+  width: 80%; 
+}
+
+.depth-info-side small {
+  font-size: 11px;
+  color: #9CA3AF;
+  margin-top: 4px;
+}
+
+/* --- FORM STYLES --- */
+.edit-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0px; 
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px; 
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.input-group input {
+  padding: 10px 12px;
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  background-color: var(--bg-panel-inner);
+  color: var(--text-primary);
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box; 
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.input-group input:focus {
+  border-color: var(--button-blue);
+}
+
+.input-group input:disabled {
+  background-color: var(--bg-disabled);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  border-color: transparent;
+}
+
+/* Dark Mode Overrides */
+[data-theme='dark'] .visualization-cards-wrapper {
+    background-color: #4D4D4D; 
+}
+[data-theme='dark'] .vis-card {
+    background-color: #2B2E32;
+    box-shadow: none;
+}
+[data-theme='dark'] .speed-track {
+    background-color: #4B5563;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .visualization-cards-wrapper {
+    flex-direction: column; 
+  }
+}

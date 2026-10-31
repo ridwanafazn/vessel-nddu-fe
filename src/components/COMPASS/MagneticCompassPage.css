@@ -1,0 +1,475 @@
+/* --- MAGNETIC COMPASS PAGE CSS --- */
+
+/* --- CONTAINER (DEFAULT LIGHT) --- */
+.magnet-unified-container {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.magnet-header-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.magnet-title-icon-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.magnet-title-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.magnet-content-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; 
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* === VISUAL COMPASS LAYOUT === */
+.compass-visual-side {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+}
+
+.compass-visual-wrapper {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- NEW LAYER: Cardinal Circle Line (REVISI TANPA KOTAK) --- */
+.compass-circle-line-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px; /* Diameter lingkaran */
+    height: 220px;
+    border-radius: 50%;
+    
+    /* HAPUS BORDER LAMA */
+    border: none;
+    
+    /* GUNAKAN CONIC GRADIENT UNTUK MEMBUAT GARIS DENGAN CELAH */
+    /* Derajat diatur supaya ada "lubang" transparan di posisi N(0), E(90), S(180), W(270) */
+    background: conic-gradient(
+        transparent 0deg 10deg,      /* Celah Utara Kanan */
+        #0088CC 10deg 80deg,         /* Garis Biru NE */
+        transparent 80deg 100deg,    /* Celah Timur */
+        #0088CC 100deg 170deg,       /* Garis Biru SE */
+        transparent 170deg 190deg,   /* Celah Selatan */
+        #0088CC 190deg 260deg,       /* Garis Biru SW */
+        transparent 260deg 280deg,   /* Celah Barat */
+        #0088CC 280deg 350deg,       /* Garis Biru NW */
+        transparent 350deg 360deg    /* Celah Utara Kiri */
+    );
+
+    /* GUNAKAN MASK UNTUK MEMBUAT TENGAHNYA BOLONG (JADI CINCIN) */
+    /* Bagian dalam transparan, bagian luar (2px terakhir) opaque/terlihat */
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #fff calc(100% - 2px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #fff calc(100% - 2px));
+    
+    z-index: 0; 
+    pointer-events: none;
+}
+
+/* --- LAYER 1: LABEL LUAR (N E S W) --- */
+.outside-cardinals-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* UPDATE DISINI: HAPUS BACKGROUND & PADDING AGAR TRANSPARAN */
+.outside-label {
+    position: absolute;
+    font-size: 20px;
+    font-weight: 800;
+    color: #0088CC;
+    line-height: 1;
+    /* Background dihapus, kotak hilang! */
+    background-color: transparent; 
+    padding: 0; 
+}
+
+.label-n { top: 0; left: 50%; transform: translateX(-50%); }
+.label-s { bottom: 0; left: 50%; transform: translateX(-50%); }
+.label-e { right: 0; top: 50%; transform: translateY(-50%); }
+.label-w { left: 0; top: 50%; transform: translateY(-50%); }
+
+/* --- LAYER 2: DIAL DALAM --- */
+.manual-compass-dial {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 6px solid #E6F0FF;
+    box-shadow: 
+        inset 0 0 14px rgba(0,0,0,0.1),
+        0 4px 14px rgba(0,0,0,0.14);
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.manual-compass-dial::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: repeating-conic-gradient(
+        from -11.25deg,
+        #F0F8FF 0deg 22.5deg,
+        transparent 22.5deg 90deg
+    );
+    z-index: 0;
+    opacity: 0.8;
+}
+
+/* MARKER (Ticks) */
+.compass-mark-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.compass-tick {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #CBD5E1;
+    width: 2px;
+}
+
+.tick-long { height: 14px; background-color: #64748B; width: 2.5px; }
+.tick-medium { height: 10px; background-color: #94A3B8; }
+.tick-short { height: 7px; }
+
+/* Wrapper Label Derajat (Di Dalam) */
+.compass-labels-wrapper-inside {
+    position: absolute;
+    top: 17px;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 38px;
+    margin-left: -19px;
+}
+
+.degree-text-inside { font-size: 10px; font-weight: 600; color: #9CA3AF; }
+.degree-cardinal { color: #4B5563; font-weight: 700; font-size: 11px; }
+
+/* --- JARUM KOMPAS --- */
+.manual-compass-needle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0px; 
+    height: 0px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(1px 3px 3px rgba(0,0,0,0.2));
+}
+
+.needle-part { width: 0; height: 0; display: flex; }
+.needle-north { position: absolute; bottom: 0; width: 20px; height: 67px; left: -10px; }
+.needle-half { width: 50%; height: 100%; }
+.left-red { float: left; background-color: #B00000; clip-path: polygon(100% 0, 0 100%, 100% 100%); }
+.right-red { float: right; background-color: #E60000; clip-path: polygon(0 0, 100% 100%, 0 100%); }
+.needle-south { position: absolute; top: 0; width: 20px; height: 67px; left: -10px; }
+.left-blue { float: left; background-color: #005F8F; clip-path: polygon(100% 100%, 0 0, 100% 0); }
+.right-blue { float: right; background-color: #0088CC; clip-path: polygon(0 100%, 100% 0, 0 0); }
+.needle-center-cap {
+    position: absolute; top: 0; left: 0; transform: translate(-50%, -50%);
+    width: 11px; height: 11px; background-color: #4B5563;
+    border-radius: 50%; border: 2px solid #374151; z-index: 15;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+
+/* === RIGHT PANEL DATA LAYOUT === */
+.data-right-panel {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    min-height: 240px; 
+}
+
+/* 1. HEADING SECTION */
+.heading-section {
+    margin-bottom: 24px;
+}
+
+.heading-label-top {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6B7280;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.heading-value-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.heading-number-big {
+    font-size: 35px;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.heading-unit-big {
+    font-size: 24px;
+    font-weight: 700;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+/* 2. DIVIDER */
+.data-horizontal-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #E5E7EB;
+    margin-bottom: 24px;
+    transition: background-color 0.3s ease;
+}
+
+/* 3. SECONDARY DATA (Horizontal) */
+.secondary-data-row {
+    display: flex;
+    gap: 50px;
+}
+
+.secondary-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.secondary-label {
+    font-size: 13px;
+    color: #6B7280;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.secondary-value-box {
+    font-size: 26px;
+    font-weight: 600;
+    color: #374151;
+    transition: color 0.3s ease;
+}
+
+.unit-small {
+    font-size: 15px;
+    color: #9CA3AF;
+    margin-left: 4px;
+    font-weight: 500;
+}
+
+/* --- EDIT FORM & RESPONSIVE --- */
+.edit-form-container {
+    display: flex; flex-direction: column; gap: 0; margin-bottom: 20px; flex-grow: 1;
+}
+
+.input-group {
+    display: flex; flex-direction: column; gap: 6px; margin-bottom: 9px;
+}
+
+.input-group label {
+    font-size: 14px; font-weight: 500; color: var(--text-primary);
+}
+
+.input-group input {
+    padding: 9px 11px;
+    border: 1px solid var(--border-primary);
+    border-radius: 6px;
+    background-color: var(--bg-panel-inner);
+    color: var(--text-primary);
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.input-group input:focus { border-color: var(--button-blue); }
+.input-group input:disabled { background-color: var(--bg-disabled); color: var(--text-disabled); cursor: not-allowed; border-color: transparent; }
+
+@media (max-width: 900px) {
+    .magnet-content-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .data-right-panel {
+        padding-left: 0;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .heading-value-wrapper {
+        justify-content: center;
+    }
+
+    .secondary-data-row {
+        justify-content: center;
+    }
+}
+
+/* ================================================================= */
+/* =========== DARK MODE OVERRIDES (SUPPORT ALL CLASSES) =========== */
+/* ================================================================= */
+
+/* Support: .dark-mode, .dark (Tailwind), or [data-theme='dark'] */
+body.dark-mode .magnet-unified-container,
+body.dark .magnet-unified-container,
+.dark-mode .magnet-unified-container,
+.dark .magnet-unified-container,
+[data-theme='dark'] .magnet-unified-container {
+    background-color: #43464B !important;
+    border: 1px solid #555;
+    box-shadow: none;
+}
+
+/* UPDATE DISINI: Karena background di atas sudah dihapus (transparent), 
+   kita tidak perlu lagi menimpa background-color di dark mode. 
+   Cukup pastikan warnanya tetap enak dilihat. */
+   
+/* 1. Header Judul jadi Putih */
+body.dark-mode .magnet-title-text,
+body.dark .magnet-title-text,
+.dark-mode .magnet-title-text,
+.dark .magnet-title-text,
+[data-theme='dark'] .magnet-title-text {
+    color: #FFFFFF !important;
+}
+
+/* 2. Border bawah header jadi samar */
+body.dark-mode .magnet-header-row,
+body.dark .magnet-header-row,
+.dark-mode .magnet-header-row,
+.dark .magnet-header-row,
+[data-theme='dark'] .magnet-header-row {
+    border-bottom-color: #5C5F66 !important;
+}
+
+/* 3. Angka Besar (HEADING) jadi Putih */
+body.dark-mode .heading-number-big,
+body.dark .heading-number-big,
+.dark-mode .heading-number-big,
+.dark .heading-number-big,
+[data-theme='dark'] .heading-number-big {
+    color: #FFFFFF !important;
+}
+
+/* 4. Satuan Heading (°SE) jadi Putih */
+body.dark-mode .heading-unit-big,
+body.dark .heading-unit-big,
+.dark-mode .heading-unit-big,
+.dark .heading-unit-big,
+[data-theme='dark'] .heading-unit-big {
+    color: #FFFFFF !important;
+}
+
+/* 5. Label Top (HEADING) jadi Putih */
+body.dark-mode .heading-label-top,
+body.dark .heading-label-top,
+.dark-mode .heading-label-top,
+.dark .heading-label-top,
+[data-theme='dark'] .heading-label-top {
+    color: #FFFFFF !important;
+    opacity: 0.8;
+}
+
+/* 6. Divider jadi samar */
+body.dark-mode .data-horizontal-divider,
+body.dark .data-horizontal-divider,
+.dark-mode .data-horizontal-divider,
+.dark .data-horizontal-divider,
+[data-theme='dark'] .data-horizontal-divider {
+    background-color: #5C5F66 !important;
+}
+
+/* 7. Secondary Labels (DEVIATION/VARIATION) jadi Putih */
+body.dark-mode .secondary-label,
+body.dark .secondary-label,
+.dark-mode .secondary-label,
+.dark .secondary-label,
+[data-theme='dark'] .secondary-label {
+    color: #FFFFFF !important;
+    opacity: 0.8;
+}
+
+/* 8. Secondary Values jadi Putih */
+body.dark-mode .secondary-value-box,
+body.dark .secondary-value-box,
+.dark-mode .secondary-value-box,
+.dark .secondary-value-box,
+[data-theme='dark'] .secondary-value-box {
+    color: #FFFFFF !important;
+}
+
+/* 9. Satuan kecil (°C / °E) jadi Putih */
+body.dark-mode .unit-small,
+body.dark .unit-small,
+.dark-mode .unit-small,
+.dark .unit-small,
+[data-theme='dark'] .unit-small {
+    color: #FFFFFF !important;
+    opacity: 0.7;
+}

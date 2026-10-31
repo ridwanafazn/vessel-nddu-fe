@@ -1,0 +1,267 @@
+/* --- CONTAINER VISUALISASI UTAMA --- */
+.weather-wind-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  background-color: var(--bg-position);
+  padding: 20px;
+  border-radius: 12px;
+  flex-grow: 1;
+  transition: background-color 0.3s ease;
+  min-height: 400px;
+}
+
+/* --- SECTION LAYOUT (Weather vs Wind) --- */
+.weather-display-section,
+.wind-indicator-section {
+  background-color: var(--bg-panel-inner);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid var(--border-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wind section lebih lebar karena ada kompas */
+.wind-indicator-section {
+  flex: 2; 
+}
+
+/* --- HEADERS PER SECTION --- */
+.weather-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--bg-secondary);
+  padding-bottom: 10px;
+}
+
+.weather-section-header h3 {
+  font-size: 16px; 
+  font-weight: 600; 
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.weather-header-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* --- WEATHER DATA LIST (Simple Layout with Lines) --- */
+.weather-data-simple {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Gap dihapus karena diganti padding item */
+  /* Membuat list data berada di tengah secara vertikal */
+  justify-content: center; 
+  flex-grow: 1; 
+}
+
+.weather-data-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  /* Memberi jarak antar item dan garis */
+  padding: 15px 0; 
+  /* Garis pemisah di bawah item */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+}
+
+/* Hapus garis pada item terakhir */
+.weather-data-item:last-child {
+  border-bottom: none;
+}
+
+.weather-data-label-simple {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.weather-data-value-simple {
+  font-size: 24px; /* Font diperbesar sedikit */
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Roboto', monospace;
+}
+
+/* --- WIND INDICATOR LAYOUT (CENTERED) --- */
+.wind-display-container {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 10px 0;
+}
+
+/* Wrapper Kompas Visual */
+.wind-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  position: relative; 
+  min-height: 240px;
+  width: 240px;
+}
+
+/* Data Text di samping Kompas */
+.wind-data-simple {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 0 0 auto;
+  justify-content: center;
+  text-align: left;
+  min-width: 150px;
+}
+
+/* --- KOMPAS & VISUALISASI --- */
+.compass-dial-container {
+  position: relative;
+  width: 200px; 
+  height: 200px; 
+  border-radius: 50%;
+  background-color: #2196F3; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.compass-degree-label {
+  font-size: 11px;
+  font-weight: bold;
+  color: #000;
+  z-index: 10;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  pointer-events: none;
+}
+
+.ship-container {
+  position: absolute; 
+  width: 100px; 
+  height: 100px; 
+  z-index: 2; 
+  transition: transform 0.3s ease; 
+}
+
+.ship {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Panah Angin */
+.wind-arrow-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.wind-arrow-image {
+  width: 70px;
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* --- INPUT FORMS (PANEL KANAN) --- */
+.weather-input-group { 
+  display: flex; 
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  gap: 6px;
+}
+
+.weather-input-group label { 
+  font-size: 14px; 
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.input-with-unit {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.weather-input-group input { 
+  width: 100%;
+  padding: 10px 12px; 
+  border: 1px solid var(--border-primary); 
+  border-radius: 6px;
+  background-color: var(--bg-panel-inner);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease;
+  font-size: 14px;
+}
+
+.weather-input-group input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.weather-input-group input:disabled { 
+  background-color: var(--bg-disabled); 
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+/* --- OVERRIDE DARK MODE --- */
+[data-theme='dark'] .weather-wind-container {
+  background-color: #4D4D4D;
+}
+
+[data-theme='dark'] .compass-dial-container {
+  border-color: #e5e5e5;
+  background-color: #2196F3; /* Tetap Biru Laut */
+}
+
+[data-theme='dark'] .compass-degree-label {
+  color: #fff !important;
+  text-shadow: 0 0 2px rgba(0,0,0,0.8);
+}
+
+[data-theme='dark'] .weather-section-header {
+    border-bottom-color: #4B5563;
+}
+
+/* Garis pemisah Weather Data di Dark Mode */
+[data-theme='dark'] .weather-data-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 968px) {
+  .weather-wind-container {
+    flex-direction: column;
+  }
+  
+  .wind-display-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .wind-data-simple {
+    text-align: center;
+    align-items: center;
+  }
+  
+  .wind-visual {
+    margin-top: 10px;
+  }
+}
