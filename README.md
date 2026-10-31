@@ -22,7 +22,8 @@ Aplikasi React + Vite (opsional desktop Tauri) yang mengonsumsi backend Rust
 | Swagger | https://vessel-nddu.onrender.com/swagger-ui/ |
 | OpenAPI | https://vessel-nddu.onrender.com/api-docs/openapi.json |
 | WebSocket | wss://vessel-nddu.onrender.com/ws |
-| Frontend live | _(isi setelah deploy Cloudflare Pages)_ |
+| Frontend live | https://vessel-nddu-fe.pages.dev |
+| Source repo | https://github.com/ridwanafazn/vessel-nddu-fe |
 
 Login demo: **admin / admin** (hardcoded di backend, belum ada JWT).
 
